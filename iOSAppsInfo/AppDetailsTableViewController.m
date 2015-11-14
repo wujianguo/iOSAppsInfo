@@ -7,26 +7,25 @@
 //
 
 #import "AppDetailsTableViewController.h"
+#import "LMAppController.h"
 
 @interface AppDetailsTableViewController ()
+
+@property NSString *appStoreUrl;
+@property NSString *appStoreVersion;
+
+@property (weak, nonatomic) IBOutlet UILabel *appStoreVersionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *iconImage;
 @property (weak, nonatomic) IBOutlet UILabel *appNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *appVersionLabel;
-
-
 @property (weak, nonatomic) IBOutlet UILabel *sizeLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *bundleIdentifierLabel;
 @property (weak, nonatomic) IBOutlet UILabel *applicationTypeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *diskUsageLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *itemNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *minimumSystemVersionLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *itemIDLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *teamIDLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *vendorNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sdkVersionLabel;
 
@@ -51,6 +50,45 @@
     self.sdkVersionLabel.text = self.app.sdkVersion;
 }
 
+- (void)appStoreInfo {
+    NSString *urlStr = [NSString stringWithFormat:@"https://itunes.apple.com/lookup?id=%@", self.app.itemID];
+    NSURL *url = [NSURL URLWithString: urlStr];
+    [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error != nil) {
+            return;
+        }
+        NSError *jsonError = nil;
+        NSDictionary *resultJSON = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
+        if (jsonError != nil) {
+            return;
+        }
+        NSArray *results = resultJSON[@"results"];
+        if ([results count] == 0) {
+            return;
+        }
+        NSDictionary *detail = results[0];
+        self.appStoreVersion = detail[@"version"];
+        self.appStoreUrl = detail[@"trackViewUrl"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.appStoreVersionLabel.text = self.appStoreVersion;
+        });
+    }];
+}
+
+- (IBAction)actionButtonClick:(UIBarButtonItem *)sender {
+    UIAlertController *actionController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [actionController addAction:[UIAlertAction actionWithTitle:@"open Application" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[LMAppController sharedInstance] openAppWithBundleIdentifier:self.app.bundleIdentifier];
+    }]];
+    [actionController addAction:[UIAlertAction actionWithTitle:@"open in App Store" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.appStoreUrl]];
+    }]];
+    [actionController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+
+    }]];
+    
+    [self presentViewController:actionController animated:YES completion:nil];
+}
 
 
 #pragma mark - Table view data source
