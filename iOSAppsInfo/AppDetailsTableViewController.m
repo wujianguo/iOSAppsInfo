@@ -11,7 +11,7 @@
 
 @interface AppDetailsTableViewController ()
 
-@property NSString *appStoreUrl;
+//@property NSString *appStoreUrl;
 @property NSString *appStoreVersion;
 
 @property (weak, nonatomic) IBOutlet UILabel *appStoreVersionLabel;
@@ -48,31 +48,35 @@
     self.vendorNameLabel.text = self.app.vendorName;
     self.minimumSystemVersionLabel.text = self.app.minimumSystemVersion;
     self.sdkVersionLabel.text = self.app.sdkVersion;
+    [self appStoreInfo];
 }
 
 - (void)appStoreInfo {
     NSString *urlStr = [NSString stringWithFormat:@"https://itunes.apple.com/lookup?id=%@", self.app.itemID];
     NSURL *url = [NSURL URLWithString: urlStr];
-    [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error != nil) {
+            NSLog(@"error: %@", error);
             return;
         }
         NSError *jsonError = nil;
         NSDictionary *resultJSON = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
         if (jsonError != nil) {
+            NSLog(@"error: %@", error);
             return;
         }
+        NSLog(@"%@", resultJSON);
         NSArray *results = resultJSON[@"results"];
         if ([results count] == 0) {
             return;
         }
         NSDictionary *detail = results[0];
         self.appStoreVersion = detail[@"version"];
-        self.appStoreUrl = detail[@"trackViewUrl"];
+//        self.appStoreUrl = detail[@"trackViewUrl"];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.appStoreVersionLabel.text = self.appStoreVersion;
         });
-    }];
+    }] resume];
 }
 
 - (IBAction)actionButtonClick:(UIBarButtonItem *)sender {
@@ -81,7 +85,8 @@
         [[LMAppController sharedInstance] openAppWithBundleIdentifier:self.app.bundleIdentifier];
     }]];
     [actionController addAction:[UIAlertAction actionWithTitle:@"open in App Store" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.appStoreUrl]];
+        NSString *u = [NSString stringWithFormat:@"https://itunes.apple.com/app/wechat/id%@", self.app.itemID];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:u]];
     }]];
     [actionController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
 
