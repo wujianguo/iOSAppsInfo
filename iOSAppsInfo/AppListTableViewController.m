@@ -24,6 +24,7 @@
 }
 
 - (IBAction)startRefresh:(UIRefreshControl *)sender {
+    [sender endRefreshing];
     self.apps = [LMAppController sharedInstance].installedApplications;
     [self.tableView reloadData];
 }
