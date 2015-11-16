@@ -6,29 +6,25 @@ iOSAppsInfo
 ![App Detail Screenshot](SampleImages/3.PNG "App Detail")
 ![App Detail Screenshot](SampleImages/4.PNG "App Detail")
 
-This is an Application which using ios private api to list installed Applications and their details, including:
-* localizedShortName;
-* localizedName;
-* bundleIdentifier;
-* appTags;
-* applicationDSID;
-* applicationIdentifier;
-* applicationType;
-* dynamicDiskUsage;
-* groupIdentifiers;
-* itemID;
-* itemName;
-* minimumSystemVersion;
-* requiredDeviceCapabilities;
-* roleIdentifier;
-* sdkVersion;
-* shortVersionString;
-* sourceAppIdentifier;
-* staticDiskUsage;
-* teamID;
-* vendorName;
+This is an Application which using ios private api to list all the installed Applications and their details, including:
+* localizedShortName
+* localizedName
+* bundleIdentifier
+* applicationIdentifier
+* applicationType
+* dynamicDiskUsage
+* groupIdentifiers
+* itemID
+* itemName
+* minimumSystemVersion
+* requiredDeviceCapabilities
+* sdkVersion
+* shortVersionString
+* staticDiskUsage
+* teamID
+* vendorName
 
-and all the applications can be opened by this app with their bundleIdentifier.
+and all of these applications can be opened by this app with their bundleIdentifier.
 
 Also, we list all the public and private scheme urls.
 
