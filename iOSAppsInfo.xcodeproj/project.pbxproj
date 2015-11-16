@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		816DEE591BF7206E00FF5C5A /* AppDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 816DEE581BF7206E00FF5C5A /* AppDetailsTableViewController.m */; };
-		816DEE5B1BF96E7100FF5C5A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 816DEE5A1BF96E7100FF5C5A /* README.md */; };
 		81ED218F1BF7170F0045C284 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 81ED218E1BF7170F0045C284 /* main.m */; };
 		81ED21921BF7170F0045C284 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 81ED21911BF7170F0045C284 /* AppDelegate.m */; };
 		81ED21981BF717100045C284 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81ED21961BF717100045C284 /* Main.storyboard */; };
@@ -186,7 +185,6 @@
 				816DEE591BF7206E00FF5C5A /* AppDetailsTableViewController.m in Sources */,
 				81ED21A61BF717600045C284 /* AppListTableViewController.m in Sources */,
 				81ED21B11BF71BD70045C284 /* SchemeURLsTableViewController.m in Sources */,
-				816DEE5B1BF96E7100FF5C5A /* README.md in Sources */,
 				81ED218F1BF7170F0045C284 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
