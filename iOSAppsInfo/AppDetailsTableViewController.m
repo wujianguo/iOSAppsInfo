@@ -74,6 +74,7 @@
         self.appStoreVersion = detail[@"version"];
         self.appStoreUrl = detail[@"trackViewUrl"];
         dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"%@", self.appStoreVersion);
             self.appStoreVersionLabel.text = self.appStoreVersion;
         });
     }] resume];
