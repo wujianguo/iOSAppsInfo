@@ -11,7 +11,7 @@
 
 @interface AppDetailsTableViewController ()
 
-//@property NSString *appStoreUrl;
+@property NSString *appStoreUrl;
 @property NSString *appStoreVersion;
 
 @property (weak, nonatomic) IBOutlet UILabel *appStoreVersionLabel;
@@ -72,7 +72,7 @@
         }
         NSDictionary *detail = results[0];
         self.appStoreVersion = detail[@"version"];
-//        self.appStoreUrl = detail[@"trackViewUrl"];
+        self.appStoreUrl = detail[@"trackViewUrl"];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.appStoreVersionLabel.text = self.appStoreVersion;
         });
@@ -85,8 +85,7 @@
         [[LMAppController sharedInstance] openAppWithBundleIdentifier:self.app.bundleIdentifier];
     }]];
     [actionController addAction:[UIAlertAction actionWithTitle:@"open in App Store" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSString *u = [NSString stringWithFormat:@"https://itunes.apple.com/app/wechat/id%@", self.app.itemID];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:u]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.appStoreUrl]];
     }]];
     [actionController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
 
