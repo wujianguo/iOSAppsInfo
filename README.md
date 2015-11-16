@@ -28,7 +28,9 @@ This is an Application which using ios private api to list installed Application
 * teamID;
 * vendorName;
 
-Also, we list all the public and private scheme urls
+and all the applications can be opened by this app with their bundleIdentifier.
+
+Also, we list all the public and private scheme urls.
 
 References
 ---------
