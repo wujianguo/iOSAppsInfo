@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		816DEE591BF7206E00FF5C5A /* AppDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 816DEE581BF7206E00FF5C5A /* AppDetailsTableViewController.m */; };
+		816DEE5B1BF96E7100FF5C5A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 816DEE5A1BF96E7100FF5C5A /* README.md */; };
 		81ED218F1BF7170F0045C284 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 81ED218E1BF7170F0045C284 /* main.m */; };
 		81ED21921BF7170F0045C284 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 81ED21911BF7170F0045C284 /* AppDelegate.m */; };
 		81ED21981BF717100045C284 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81ED21961BF717100045C284 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		816DEE571BF7206E00FF5C5A /* AppDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDetailsTableViewController.h; sourceTree = "<group>"; };
 		816DEE581BF7206E00FF5C5A /* AppDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDetailsTableViewController.m; sourceTree = "<group>"; };
+		816DEE5A1BF96E7100FF5C5A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		81ED218A1BF7170F0045C284 /* iOSAppsInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSAppsInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81ED218E1BF7170F0045C284 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		81ED21901BF7170F0045C284 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 		81ED218D1BF7170F0045C284 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				816DEE5A1BF96E7100FF5C5A /* README.md */,
 				81ED21901BF7170F0045C284 /* AppDelegate.h */,
 				81ED21911BF7170F0045C284 /* AppDelegate.m */,
 				81ED21961BF717100045C284 /* Main.storyboard */,
@@ -183,6 +186,7 @@
 				816DEE591BF7206E00FF5C5A /* AppDetailsTableViewController.m in Sources */,
 				81ED21A61BF717600045C284 /* AppListTableViewController.m in Sources */,
 				81ED21B11BF71BD70045C284 /* SchemeURLsTableViewController.m in Sources */,
+				816DEE5B1BF96E7100FF5C5A /* README.md in Sources */,
 				81ED218F1BF7170F0045C284 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
