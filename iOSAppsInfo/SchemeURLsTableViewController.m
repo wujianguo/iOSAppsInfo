@@ -43,7 +43,6 @@
     }
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SchemeTableViewCellIdentifier" forIndexPath:indexPath];
     if (self.schemeType == 0) {
@@ -52,6 +51,16 @@
         cell.textLabel.text = self.privateURLSchemes[indexPath.row];
     }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.schemeType == 0) {
+        NSString *url = [NSString stringWithFormat:@"%@://app/", self.publicURLSchemes[indexPath.row]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    } else {
+        NSString *url = [NSString stringWithFormat:@"%@://app/", self.privateURLSchemes[indexPath.row]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    }
 }
 
 @end
