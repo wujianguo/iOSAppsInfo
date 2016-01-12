@@ -1,5 +1,6 @@
 iOSAppsInfo
 ---------
+[![Build Status](https://travis-ci.org/wujianguo/iOSAppsInfo.svg)](https://travis-ci.org/wujianguo/iOSAppsInfo)
 
 This is an Application which using ios private api to list all the installed Applications and their details, including:
 * localizedShortName
