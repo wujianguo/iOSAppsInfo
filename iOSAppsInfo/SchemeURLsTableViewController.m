@@ -20,8 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.schemeType = 0;
-    self.publicURLSchemes = [[LMAppController sharedInstance] publicURLSchemes];
-    self.privateURLSchemes = [[LMAppController sharedInstance] privateURLSchemes];
+    NSArray *publicURLSchemes = [[LMAppController sharedInstance] publicURLSchemes];
+    NSArray *privateURLSchemes = [[LMAppController sharedInstance] privateURLSchemes];
+    self.publicURLSchemes = [publicURLSchemes sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    self.privateURLSchemes = [privateURLSchemes sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
 }
 
 - (IBAction)schemeTypeChanged:(UISegmentedControl *)sender {
