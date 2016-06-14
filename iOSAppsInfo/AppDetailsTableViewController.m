@@ -62,7 +62,7 @@
         NSError *jsonError = nil;
         NSDictionary *resultJSON = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
         if (jsonError != nil) {
-            NSLog(@"error: %@", error);
+            NSLog(@"jsonError: %@", jsonError);
             return;
         }
         NSLog(@"%@", resultJSON);
