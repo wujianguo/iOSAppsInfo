@@ -29,7 +29,7 @@ References
 * <https://github.com/Shmoopi/iOS-System-Services>
 * <https://github.com/nst/iOS-Runtime-Headers>
 
-![App List Screenshot](https://raw.githubusercontent.com/wujianguo/iOSAppsInfo/master/SampleImages/1.PNG "App List")
-![System Scheme URLs Screenshot](https://raw.githubusercontent.com/wujianguo/iOSAppsInfo/master/SampleImages/2.PNG "System Scheme URLs")
-![App Detail Screenshot](https://raw.githubusercontent.com/wujianguo/iOSAppsInfo/master/SampleImages/3.PNG "App Detail")
-![App Detail Screenshot](https://raw.githubusercontent.com/wujianguo/iOSAppsInfo/master/SampleImages/4.PNG "App Detail")
+![App List Screenshot](SampleImages/1.PNG "App List")
+![System Scheme URLs Screenshot](SampleImages/2.PNG "System Scheme URLs")
+![App Detail Screenshot](SampleImages/3.PNG "App Detail")
+![App Detail Screenshot](SampleImages/4.PNG "App Detail")

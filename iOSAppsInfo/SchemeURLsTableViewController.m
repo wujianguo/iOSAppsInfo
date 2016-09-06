@@ -49,8 +49,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SchemeTableViewCellIdentifier" forIndexPath:indexPath];
     if (self.schemeType == 0) {
         cell.textLabel.text = self.publicURLSchemes[indexPath.row];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else {
         cell.textLabel.text = self.privateURLSchemes[indexPath.row];
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }
     return cell;
 }

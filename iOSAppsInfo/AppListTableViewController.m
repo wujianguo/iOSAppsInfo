@@ -45,6 +45,7 @@
     cell.imageView.image = app.icon;
     cell.textLabel.text = app.name;
     cell.detailTextLabel.text = app.shortVersionString;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
