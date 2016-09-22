@@ -28,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *teamIDLabel;
 @property (weak, nonatomic) IBOutlet UILabel *vendorNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sdkVersionLabel;
-
+@property (nonatomic, assign)BOOL isCN;
 @end
 
 @implementation AppDetailsTableViewController
@@ -52,7 +52,13 @@
 }
 
 - (void)appStoreInfo {
-    NSString *urlStr = [NSString stringWithFormat:@"https://itunes.apple.com/lookup?id=%@", self.app.itemID];
+    NSString *urlStr = nil;
+    if (self.isCN) {
+        urlStr = [NSString stringWithFormat:@"https://itunes.apple.com/cn/lookup?id=%@", self.app.itemID];
+    }else{
+        urlStr = [NSString stringWithFormat:@"https://itunes.apple.com/lookup?id=%@", self.app.itemID];
+    }
+
     NSURL *url = [NSURL URLWithString: urlStr];
     [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error != nil) {
@@ -68,6 +74,14 @@
         NSLog(@"%@", resultJSON);
         NSArray *results = resultJSON[@"results"];
         if ([results count] == 0) {
+            
+            
+            if (!self.isCN) {
+                self.isCN = YES;
+                [self appStoreInfo];
+            }
+            
+            
             return;
         }
         NSDictionary *detail = results[0];
