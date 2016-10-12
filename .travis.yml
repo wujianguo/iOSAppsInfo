@@ -1,5 +1,6 @@
 language: objective-c
 xcode_project: iOSAppsInfo.xcodeproj
 xcode_scheme: iOSAppsInfo
+xcode_sdk: iphonesimulator10.0
 notifications:
   email: false
